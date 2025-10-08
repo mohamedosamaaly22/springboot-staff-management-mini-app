@@ -1,0 +1,103 @@
+<!-- Add new staff form -->
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Add New Staff</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f6f8;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 500px;
+            background: white;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+            margin-bottom: 25px;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        label {
+            font-weight: bold;
+            color: #444;
+        }
+
+        input[type="text"] {
+            padding: 10px;
+            border-radius: 6px;
+            border: 1px solid #ccc;
+            font-size: 14px;
+        }
+
+        button {
+            background-color: #2d89ef;
+            color: white;
+            border: none;
+            padding: 12px;
+            border-radius: 6px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        button:hover {
+            background-color: #1a5fb4;
+        }
+
+        .link {
+            text-align: center;
+            margin-top: 15px;
+        }
+
+        .link a {
+            color: #2d89ef;
+            text-decoration: none;
+            font-size: 14px;
+        }
+
+        .link a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Add New Staff Member</h1>
+        <form th:action="@{/submitStaff}" th:object="${newStaff}" method="post">
+            <label for="name">Name:</label>
+            <input type="text" id="name" th:field="*{name}" placeholder="Enter staff name" required />
+
+            <label for="position">Position:</label>
+            <input type="text" id="position" th:field="*{position}" placeholder="Enter position" required />
+
+            <label for="salary">Salary:</label>
+            <input type="text" id="salary" th:field="*{salary}" placeholder="Enter salary" required />
+
+            <button type="submit">Add Staff</button>
+        </form>
+
+        <div class="link">
+            <a th:href="@{/getStaffList}">View Staff List</a>
+        </div>
+    </div>
+</body>
+</html>
